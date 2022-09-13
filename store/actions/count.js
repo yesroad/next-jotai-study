@@ -14,7 +14,7 @@ export const writeOnlyMinusAtom = atom(null, (get, set, action) =>
 	set(countAtom, get(countAtom) - action),
 );
 
-// 또는 action 한번에 해결 가능
+// 또는 action 하나에 사용
 export const writeOnlyCountAtom = atom(null, (get, set, action) => {
 	switch (action.type) {
 		case 'MINUS':

@@ -1,8 +1,8 @@
 import { useAtom } from 'jotai';
 import Head from 'next/head';
-import { readOnlyMultiplyAtom, writeOnlyCountAtom, writeOnlyMinusAtom, writeOnlyPlusAtom } from '../store/actions/count';
-import { countAtom, writeOnlyAtom } from '../store/atoms/count';
+
 import styles from '../styles/Home.module.css';
+import { countAtom, readOnlyMultiplyAtom, writeOnlyAtom, writeOnlyCountAtom, writeOnlyMinusAtom, writeOnlyPlusAtom } from '../store';
 
 export default function Home() {
 	const [count] = useAtom(countAtom);
