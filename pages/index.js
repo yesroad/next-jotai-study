@@ -1,14 +1,17 @@
 import { useAtom } from 'jotai';
 import Head from 'next/head';
-import { readOnlyMultiplyAtom, writeOnlyMinusAtom, writeOnlyPlusAtom } from '../store/actions/count';
-import { countAtom } from '../store/atoms/count';
+import { readOnlyMultiplyAtom, writeOnlyCountAtom, writeOnlyMinusAtom, writeOnlyPlusAtom } from '../store/actions/count';
+import { countAtom, writeOnlyAtom } from '../store/atoms/count';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
 	const [count] = useAtom(countAtom);
+  const [writeOnlyCount] = useAtom(writeOnlyAtom);
+
   const [multiply] = useAtom(readOnlyMultiplyAtom);
   const [,plus] = useAtom(writeOnlyPlusAtom);
   const [,minus] = useAtom(writeOnlyMinusAtom);
+  const [,writeOnly] = useAtom(writeOnlyCountAtom);
 
 	return (
 		<div className={styles.container}>
@@ -19,11 +22,18 @@ export default function Home() {
 			</Head>
 			<div>
 				<h3>Count</h3>
+        <p>예제 1</p>
         <button onClick={() => plus(1)}>+</button>
 				<span>{count}</span>
         <button onClick={() => minus(1)}>-</button>
-        <h3>readOnly</h3>
-        <span>Count * 2 : {multiply}</span>
+
+        <h3>예제 2</h3>
+        <button onClick={() => writeOnly({type: 'MINUS', count: 2})}>-</button>
+				<span>{writeOnlyCount}</span>
+        <button onClick={() => writeOnly({type: 'PLUS', count: 2})}>+</button>
+
+        <h3>예제 1에 대한 * 2 readOnly</h3>
+        <span>Count : {multiply}</span>
 			</div>
 		</div>
 	);
