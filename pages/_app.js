@@ -1,7 +1,16 @@
-import '../styles/globals.css'
+import { useAtomsDevtools } from 'jotai/devtools';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+	const AtomsDevtools = ({ children }) => {
+		useAtomsDevtools();
+		return children;
+	};
+	return (
+		<AtomsDevtools>
+			<Component {...pageProps} />
+		</AtomsDevtools>
+	);
 }
 
-export default MyApp
+export default MyApp;

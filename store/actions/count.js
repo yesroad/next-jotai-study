@@ -3,6 +3,7 @@ import { countAtom, writeOnlyAtom } from '../atoms/count';
 
 // readOnly
 export const readOnlyMultiplyAtom = atom((get) => get(countAtom) * 2);
+readOnlyMultiplyAtom.debugLabel = 'readOnlyMultiplyAtom'
 
 // writeOnly 카운트 action 만큼 더하기
 export const writeOnlyPlusAtom = atom(null, (get, set, action) =>
