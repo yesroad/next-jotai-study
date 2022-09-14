@@ -1,15 +1,27 @@
-import { useAtomsDevtools } from 'jotai/devtools';
+import { Provider } from 'jotai';
+import { useAtomsDebugValue, useAtomsDevtools } from 'jotai/devtools';
+
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
+
 	const AtomsDevtools = ({ children }) => {
-		useAtomsDevtools();
+		useAtomsDevtools('jotai');
 		return children;
 	};
+
+	const DebugAtoms = () => {
+		useAtomsDebugValue();
+		return null;
+	};
+
 	return (
-		<AtomsDevtools>
-			<Component {...pageProps} />
-		</AtomsDevtools>
+		<Provider>
+			<AtomsDevtools>
+				<DebugAtoms />
+				<Component {...pageProps} />
+			</AtomsDevtools>
+		</Provider>
 	);
 }
 

@@ -13,6 +13,7 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<h3>- <Link href='/jotai'>Jotai</Link></h3>
+			<h3>- <Link href='/jotai2'>Jotai2</Link></h3>
 		</div>
 	);
 }
